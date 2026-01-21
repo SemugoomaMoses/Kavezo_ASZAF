@@ -4,5 +4,6 @@
     {
         Console.WriteLine("Hello, World!");
         Console.WriteLine("Github kapcsolás teszt");
+        Console.WriteLine("Github összekapcsolás");
     }
 }
