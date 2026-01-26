@@ -1,4 +1,5 @@
 ﻿using Kavezo_ASZAF.Database;
+using Kavezo_ASZAF.Model;
 using System.Data;
 
 internal class Program
@@ -10,7 +11,7 @@ internal class Program
     public static DataTable adatok = new DataTable();
 
 
-    public static List<Orszag> orszagokLista = new List<Orszag>();
+    public static List<Dolgozo> dolgozoLista = new List<Dolgozo>();
     private static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
