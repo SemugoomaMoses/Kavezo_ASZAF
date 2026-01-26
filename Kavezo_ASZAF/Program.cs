@@ -11,14 +11,26 @@ internal class Program
     public static DataTable adatok = new DataTable();
 
 
-    public static List<Dolgozo> dolgozoLista = new List<Dolgozo>();
+    public static List<Termek> termekekLista = new List<Termek>();
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-        Console.WriteLine("Github kapcsolás teszt");
-        Console.WriteLine("Github összekapcsolás");
+        DBcheck(connectionString);
+        SelectFromTable("termekek", connectionString);
+        AdatBetoltes(adatok);
     }
+    private static void AdatBetoltes(DataTable adatok)
+    {
+        foreach (DataRow o in adatok.Rows)
+        {
+            Termek termek = new Termek();
 
+             termek.TermekId = o.Field<int>(0);
+             termek.Nev = o.Field<string>(1);
+             termek.Ar = o.Field<decimal>(2);
+
+            termekekLista.Add(termek);
+        }
+    }
     private static void SelectFromTable(string tableName, string connectionString)
     {
         adatok = DatabaseService.GetAllData(tableName, connectionString);
