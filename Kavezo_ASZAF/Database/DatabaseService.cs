@@ -52,18 +52,42 @@ namespace Kavezo_ASZAF.Database
             return dataTable;
         }
 
-        public static int DeleteById(string tableName, string connectionString, int id)
+        public static int DeleteById(string tableName, string idColumn, string connectionString, int id)
         {
             //1. kell egy kapcsolat
             using var connection = new MySqlConnection(connectionString);
             connection.Open();
 
             //2. kell egy parancs
-            using var command = new MySqlCommand($"delete from {tableName} where id=@id", connection);
-            command.Parameters.AddWithValue("@id", id); //behelyettesíti az id-t 
+            using var command = new MySqlCommand($"delete from {tableName} where {idColumn}=@id", connection);
+            command.Parameters.AddWithValue("@id", id); //behelyettesíti az id-t
 
             return command.ExecuteNonQuery();
             //1-sikeres command, 0-sikertelen utasítás
+        }
+
+        public static int RendelesFelvetel(
+            string connectionString,
+            int dolgozoId,
+            int termekId,
+            int mennyiseg,
+            DateTime datum)
+        {
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            string query =
+                "INSERT INTO rendelestetelek (DolgozoId, TermekId, Mennyiseg, RendelesDatum) " +
+                "VALUES (" +
+                dolgozoId + ", " +
+                termekId + ", " +
+                mennyiseg + ", '" +
+                datum.ToString("yyyy-MM-dd HH:mm:ss") +
+                "')";
+
+            using var command = new MySqlCommand(query, connection);
+
+            return command.ExecuteNonQuery();
         }
     }
 }

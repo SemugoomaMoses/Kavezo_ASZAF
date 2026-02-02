@@ -17,6 +17,7 @@ internal class Program
         Console.WriteLine("Hello, World!");
         Console.WriteLine("Github kapcsolás teszt");
         Console.WriteLine("Github összekapcsolás");
+        Console.WriteLine("Újabb változtatás teszt");
     }
 
     private static void SelectFromTable(string tableName, string connectionString)
