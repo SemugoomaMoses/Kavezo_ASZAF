@@ -11,4 +11,10 @@
     <PackageReference Include="MySqlConnector" Version="2.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="FileIO">
+      <HintPath>..\..\BosnyakBorisz\FileIO\FileIO\bin\Release\net8.0\FileIO.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
