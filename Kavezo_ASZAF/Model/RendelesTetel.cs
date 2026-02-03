@@ -8,13 +8,61 @@ namespace Kavezo_ASZAF.Model
 {
     internal class RendelesTetel
     {
-        public int TetelId { get; set; }        // adatbázis ID (egyértelmű azonosító)
-        public int DolgozoId { get; set; }      // ki vette fel
-        public int TermekId { get; set; }       // melyik termék
-        public int Mennyiseg { get; set; }      // darabszám
-        public DateTime RendelesDatum { get; set; } // mikor történt
+        private int _tetelId;
+        private int _dolgozoId;
+        private int _termekId;
+        private int _mennyiseg;
+        private DateTime _rendelesDatum;
 
-        // Konstruktor
+        public int TetelId
+        {
+            get { return _tetelId; }
+            set
+            {
+                if (value >= 0)
+                    _tetelId = value;
+            }
+        }
+
+        public int DolgozoId
+        {
+            get { return _dolgozoId; }
+            set
+            {
+                if (value >= 0)
+                    _dolgozoId = value;
+            }
+        }
+
+        public int TermekId
+        {
+            get { return _termekId; }
+            set
+            {
+                if (value >= 0)
+                    _termekId = value;
+            }
+        }
+
+        public int Mennyiseg
+        {
+            get { return _mennyiseg; }
+            set
+            {
+                if (value > 0)
+                    _mennyiseg = value;
+            }
+        }
+
+        public DateTime RendelesDatum
+        {
+            get { return _rendelesDatum; }
+            set
+            {
+                _rendelesDatum = value;
+            }
+        }
+
         public RendelesTetel(int tetelId, int dolgozoId, int termekId, int mennyiseg, DateTime datum)
         {
             TetelId = tetelId;
@@ -24,14 +72,12 @@ namespace Kavezo_ASZAF.Model
             RendelesDatum = datum;
         }
 
-        public RendelesTetel()
-        {
-            
-        }
+        public RendelesTetel() { }
 
         public override string ToString()
         {
-            return $"Tetel {TetelId}: DolgozoID={DolgozoId}, TermekID={TermekId}, Mennyiseg={Mennyiseg}, Datum={RendelesDatum}";
+
+            return $"{TetelId,7} {DolgozoId,9} {TermekId,8} {Mennyiseg,6} {RendelesDatum.ToShortDateString(),20}";
         }
     }
 }

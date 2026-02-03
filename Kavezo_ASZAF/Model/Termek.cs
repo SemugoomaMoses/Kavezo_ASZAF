@@ -8,25 +8,91 @@ namespace Kavezo_ASZAF.Model
 {
     internal class Termek
     {
-        public int TermekId { get; set; }       // adatbázis ID
-        public string Nev { get; set; }         // termék neve
-        public decimal Ar { get; set; }         // ára
+        private int _termekId;
+
+        private string _nev;
+
+        private decimal _ar;
+
+        public int TermekId
+
+        {
+
+            get { return _termekId; }
+
+            set
+
+            {
+
+                if (value >= 0)
+
+                    _termekId = value;
+
+            }
+
+        }
+
+        public string Nev
+
+        {
+
+            get { return _nev; }
+
+            set
+
+            {
+
+                if (value != "")
+
+                    _nev = value;
+
+                else
+
+                    _nev = "Névtelen termék";
+
+            }
+
+        }
+
+        public decimal Ar
+
+        {
+
+            get { return _ar; }
+
+            set
+
+            {
+
+                if (value >= 0)
+
+                    _ar = value;
+
+            }
+
+        }
 
         public Termek(int termekId, string nev, decimal ar)
+
         {
+
             TermekId = termekId;
+
             Nev = nev;
+
             Ar = ar;
+
         }
 
-        public Termek()
-        {
-           
-        }
+        public Termek() { }
 
         public override string ToString()
+
         {
-            return $"{Nev} ({Ar} Ft)";
+
+            return $"{TermekId,3} {Nev,-30} {Ar,10:N0} Ft";
+
         }
+
     }
 }
