@@ -60,7 +60,7 @@ namespace Kavezo_ASZAF.Database
 
             //2. kell egy parancs
             using var command = new MySqlCommand($"delete from {tableName} where {idColumn}=@id", connection);
-            command.Parameters.AddWithValue("@id", id); //behelyettesíti az id-t 
+            command.Parameters.AddWithValue("@id", id); //behelyettesíti az id-t
 
             return command.ExecuteNonQuery();
             //1-sikeres command, 0-sikertelen utasítás
@@ -89,7 +89,5 @@ namespace Kavezo_ASZAF.Database
 
             return command.ExecuteNonQuery();
         }
-
-
     }
 }
