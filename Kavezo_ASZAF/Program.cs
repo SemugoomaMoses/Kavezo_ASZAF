@@ -1,6 +1,7 @@
 ﻿using Kavezo_ASZAF.Database;
 using Kavezo_ASZAF.Model;
 using System.Data;
+using System.Globalization;
 
 internal class Program
 {
@@ -49,7 +50,7 @@ internal class Program
         {
             Console.WriteLine("\nKÁVÉZÓ - MENÜ");
             Console.WriteLine("1 - Listázás (Termék / Dolgozó / Rendelés / Kedvezmények)");
-            Console.WriteLine("2 - Termék keresése névre");
+            Console.WriteLine("2 - Keresése (Termék / Rendelés))");
             Console.WriteLine("3 - Legdrágább termék");
             Console.WriteLine("4 - Összbevétel rendeléstételekből");
             Console.WriteLine("5 - Dolgozónként rendelések száma");
@@ -90,7 +91,7 @@ internal class Program
                     TorlesAlMenu();
                     break;
                 default:
-                    Console.WriteLine("Program: Ezt nem értem 😅 (0-8)");
+                    Console.WriteLine("Program: Ezt nem értem  (0-8)");
                     break;
             }
         }
@@ -135,8 +136,8 @@ internal class Program
     private static void KeresesAlMenu()
     {
         Console.WriteLine("\nKERESÉS:");
-        Console.WriteLine("1 - Termékre keresés");
-        Console.WriteLine("2 - Rendelésre keresés");
+        Console.WriteLine("1 - Termékre keresés név alapján");
+        Console.WriteLine("2 - Rendelésre keresés dátum alapján");
         Console.WriteLine("0 - Vissza");
 
 
@@ -273,11 +274,36 @@ internal class Program
         {
             Console.WriteLine("Program: Nincs találat.");
         }
+
+
     }
 
-    private static void RendelesKeresesDatumra(string? v)
+    private static void RendelesKeresesDatumra(string v)
     {
-        
+        if (!DateTime.TryParse(v, out DateTime keresettDatum))
+        {
+            Console.WriteLine("Hibás dátum formátum!");
+            return;
+        }
+
+        bool volt = false;
+
+        foreach (var r in rendelesTetelekLista)
+        {
+            if (r.RendelesDatum.Date == keresettDatum.Date)
+            {
+                if (!volt)
+                {
+                    Console.WriteLine("\nProgram: Találatok:");
+                    Console.WriteLine($"{"ID",3} {"Név",-30} {"Ár",10}");
+                    Console.WriteLine(new string('-', 52));
+                    volt = true;
+                }
+
+                Console.WriteLine($"{r.ToString()}");
+            }
+        }
+
     }
 
     private static void LegdragabbTermek()
