@@ -11,10 +11,12 @@ internal class Program
     //adattároló
     public static DataTable adatok = new DataTable();
 
+    //adatbázis listák
     public static List<Termek> termekekLista = new();
     public static List<Dolgozo> dolgozokLista = new();
     public static List<RendelesTetel> rendelesTetelekLista = new();
 
+    //kedvezményhez dictionary, lista és dll
     public static List<List<string>> csvAdatok = new List<List<string>>();
     public static Dictionary<int, int> akciok = new Dictionary<int, int>();
     public static FileIO.ReadFromFile reader = new FileIO.ReadFromFile();
@@ -48,7 +50,9 @@ internal class Program
     {
         while (true)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\nKÁVÉZÓ - MENÜ");
+            Console.ResetColor();
             Console.WriteLine("1 - Listázás (Termék / Dolgozó / Rendelés / Kedvezmények)");
             Console.WriteLine("2 - Keresése (Termék / Rendelés))");
             Console.WriteLine("3 - Legdrágább termék");
@@ -101,7 +105,9 @@ internal class Program
 
     private static void ListazasAlMenu()
     {
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nLISTÁZÁS:");
+        Console.ResetColor();
         Console.WriteLine("1 - Termékek");
         Console.WriteLine("2 - Dolgozók");
         Console.WriteLine("3 - Rendelések");
@@ -135,7 +141,9 @@ internal class Program
 
     private static void KeresesAlMenu()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("\nKERESÉS:");
+        Console.ResetColor();
         Console.WriteLine("1 - Termékre keresés név alapján");
         Console.WriteLine("2 - Rendelésre keresés dátum alapján");
         Console.WriteLine("0 - Vissza");
@@ -164,7 +172,9 @@ internal class Program
 
     private static void TorlesAlMenu()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("\nTÖRLÉS:");
+        Console.ResetColor();
         Console.WriteLine("1 - Rendelés törlése");
         Console.WriteLine("2 - Termék törlése");
         Console.WriteLine("0 - Vissza");
@@ -295,8 +305,8 @@ internal class Program
                 if (!volt)
                 {
                     Console.WriteLine("\nProgram: Találatok:");
-                    Console.WriteLine($"{"ID",3} {"Név",-30} {"Ár",10}");
-                    Console.WriteLine(new string('-', 52));
+                    Console.WriteLine($"{"TetelID",7} {"DolgozoID",9} {"TermekID",8} {"Menny",6} {"Dátum",12}");
+                    Console.WriteLine(new string('-', 55));
                     volt = true;
                 }
 
