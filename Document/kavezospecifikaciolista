@@ -1,0 +1,10 @@
+Kávézó alkalmazás – Specifikáció lista
+A szoftver egy kávézó alapadatainak kezelésére szolgáló konzolos alkalmazás. A felhasználó képes megjeleníteni a termékeket, dolgozókat és rendelések adatait (rendeléstételek formájában), valamint különböző kereséseket és statisztikákat (pl. összbevétel, legdrágább termék) készíteni.
+
+Az adatok forrása MySQL adatbázis és egy külső CSV fájl. Az adatbázis
+táblái: termekek, dolgozok és rendelések adatait rendeléstételek táblában. A CSV fájl a termékekhez tartozó kedvezményeket (akciókat) tartalmazza. A fájlkezelési feladatokat a projektbe ágyazott FileIO.dll végzi.
+
+A program menürendszerrel működik, ahol a felhasználó választhat a
+különböző funkciók közül. A program az alábbi funkciókat biztosít: termékek, dolgozok és rendelések listázása, akciós termékek megtekintése, rendelés rögzítése és összbevétel megtekintése, továbbá törlés funkció áll rendelkezésre.
+
+A program C# nyelven készült, objektumorientált elvek alkalmazásával.
