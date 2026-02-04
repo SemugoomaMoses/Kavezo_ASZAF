@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS kavezo
+CREATE DATABASE kavezo
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_hungarian_ci;
 
